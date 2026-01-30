@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Payment Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>💳 Payment Portal</h2>
+    <h3>Secure Login</h3>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="text" name="captcha" placeholder="Enter CAPTCHA" required>
+      <p>🔒 CAPTCHA: <strong>{{ captcha }}</strong></p>
+      <input type="hidden" name="real_captcha" value="{{ captcha }}">
+      <button type="submit">Login</button>
+    </form>
+
+    <p>Don’t have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

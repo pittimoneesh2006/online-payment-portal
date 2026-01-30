@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Payment Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, {{ username }} 👋</h2>
+    <h3>Your Account Overview</h3>
+
+    <p><strong>💰 Main Balance:</strong> ₹{{ account.main_balance }}</p>
+    <p><strong>🏦 Savings:</strong> ₹{{ account.savings_balance }}</p>
+    <p><strong>⭐ Rewards:</strong> {{ account.reward_points }} Points</p>
+
+    <br><a href="{{ url_for('logout') }}"><button>Logout</button></a>
+  </div>
+</body>
+</html>
